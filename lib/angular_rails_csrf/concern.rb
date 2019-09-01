@@ -7,7 +7,7 @@ module AngularRailsCsrf
     end
 
     def set_xsrf_token_cookie
-      if !respond_to?(:__exclude_xsrf_token_cookie?)
+      if !defined?(cookies).nil? && !respond_to?(:__exclude_xsrf_token_cookie?)
         config = Rails.application.config
         domain = config.respond_to?(:angular_rails_csrf_domain) ? config.angular_rails_csrf_domain : nil
         cookie_name = config.respond_to?(:angular_rails_csrf_cookie_name) ? config.angular_rails_csrf_cookie_name : 'XSRF-TOKEN'
